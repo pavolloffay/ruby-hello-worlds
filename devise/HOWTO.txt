@@ -1,0 +1,58 @@
+rails new devise
+
+Gemfile:
+
+gem 'rails_layout'
+gem 'foundation-rails', '~> 5.5'
+#gem 'foundation-rails'
+gem 'simple_form'
+gem 'devise'
+
+bundle install
+
+rails generate foundation:install
+rails generate simple_form:install --foundation
+rails generate layout:install foundation5
+
+rails g controller home index
+
+routes.rb:
+
+root 'home#index'
+
+rails g devise:install
+rails g devise:views
+rails g layout:devise foundation5
+rails g devise user
+rails g devise:controllers users
+
+add migration for user.name attribute
+
+rails db:migrate
+
+config/secrets.yml
+
+config/environment/development:
+
+       config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+seed.rb:
+
+    user = User.find_or_create_by!(email: Rails.application.secrets.admin_email) do |user|
+        user.password = Rails.application.secrets.admin_password
+        user.password_confirmation = Rails.application.secrets.admin_password
+      end
+
+rails db:seed
+
+home_controller.rb:
+  before_action :authenticate_user!
+
+routes.rb:
+  devise_for :users
+  root 'home#index'
+
+
+logout button v index.erb:
+  <%= link_to "Signout", destroy_user_session_path, method: :delete %>
+

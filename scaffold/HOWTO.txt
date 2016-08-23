@@ -1,0 +1,14 @@
+rails new firstmodel
+
+install foundation & simple forms:
+
+Gemfile:
+gem 'simple_form'
+gem 'foundation-rails'
+rails generate simple_form:install --foundation
+rails generate foundation:install
+
+rails generate controller Home index
+rails generate scaffold User
+
+rails db:migrate

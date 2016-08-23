@@ -1,0 +1,35 @@
+rails new twopages
+rails generate controller Home index about contact
+
+edit routes.rb
+  root 'home#index'
+
+http://localhost:3000/
+http://localhost:3000/home/about
+http://localhost:3000/home/contact
+
+edit: app/views/home/{about,contact}.html.erb
+ - create partial menu
+
+edit routes.rb
+  get 'about', to: 'home#about'
+  get 'contact', to: 'home#contact'
+
+home_controller.rb:
+  def index
+     render text: "Hello world"
+  end
+
+###
+
+gem 'high_voltage'
+mkdir app/views/pages
+(rm Gemfile.lock 
+  + gem install high_voltage - the newest version)
+  + bundle install
+)
+
+rails routes
+
+edit app/views/pages/foo.html.erb
+http://localhost:3000/pages/foo

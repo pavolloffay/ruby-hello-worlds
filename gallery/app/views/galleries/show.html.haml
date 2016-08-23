@@ -1,0 +1,14 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @gallery.name
+
+- @gallery.pictures.each do |pic|
+  %p= image_tag(pic.image.url(:large))
+  = link_to 'remove image', pic, method: :delete
+
+
+= link_to 'Edit', edit_gallery_path(@gallery)
+\|
+= link_to 'Back', galleries_path

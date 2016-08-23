@@ -1,0 +1,19 @@
+rails new helloworld
+rails g controller Home index
+rails routes
+
+routes.rb:
+  root 'home#index'
+
+---
+
+otestovani rychlosti:
+
+ab -n 200 -c 5 http://127.0.0.1:3000/
+
+RAILS_ENV=production rails s
+
+ab -n 200 -c 5 http://127.0.0.1:3000/
+
+(+edit config/secrets.yml)
+

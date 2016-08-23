@@ -1,0 +1,20 @@
+rails new foundation-simpleform
+
+Gemfile:
+
+gem 'rails_layout'
+gem 'foundation-rails', '~> 5.5'
+#gem 'foundation-rails'
+gem 'simple_form'
+
+bundle install
+
+rails generate foundation:install
+rails generate simple_form:install --foundation
+rails generate layout:install foundation5
+
+rails g controller home index
+
+routes.rb:
+
+root 'home#index'

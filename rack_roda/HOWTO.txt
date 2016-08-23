@@ -1,0 +1,7 @@
+start "puma"
+
+curl http://127.0.0.1:9292/ -v
+curl http://127.0.0.1:9292/hello
+curl http://127.0.0.1:9292/hello -X POST
+
+ab -n 200 -c 5 http://127.0.0.1:9292/

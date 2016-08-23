@@ -1,0 +1,39 @@
+rails new firstmodel
+
+install foundation & simple forms:
+
+Gemfile:
+gem 'simple_form'
+gem 'foundation-rails'
+rails generate simple_form:install --foundation
+rails generate foundation:install
+
+rails generate controller Home index
+rails generate scaffold user
+
+rails db:migrate
+
+rails g migration AddUserItems
+
+edit the migration
+
+rails db:migrate
+
+sqlite3 db/development.sqlite3
+
+
+! routes.rb
+rails routes
+
+
+upravit kontroler, views, model
+ - zmenit na simple form
+ - pridat validace
+
+priste lepe automaticky:
+
+rails generate scaffold user name:string email:string description:string last_logged_at:datetime
+
+
+vyzkouset tez:
+http://127.0.0.1:3000/users.json
